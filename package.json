@@ -1,0 +1,23 @@
+{
+  "name": "LAEnvy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"woo!\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "Monica Grandy // monica.grandy@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.0",
+    "cors": "^2.7.1",
+    "express": "^4.13.3",
+    "lodash": "^4.3.0",
+    "morgan": "^1.6.1",
+    "nonce": "^1.0.3",
+    "oauth-signature": "^1.3.1",
+    "querystring": "^0.2.0",
+    "request": "^2.69.0"
+  }
+}

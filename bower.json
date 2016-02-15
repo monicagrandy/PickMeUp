@@ -1,0 +1,21 @@
+{
+  "name": "LAEnvy",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Monica Grandy // monica.grandy@gmail.com"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ngmap": "~1.16.7"
+  }
+}
