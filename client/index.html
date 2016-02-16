@@ -3,29 +3,60 @@
 <head>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <!-- need to npm install angular -->
-  <!-- <script src="/bower_components/ngmap/build/scripts/ng-map.min.js"></script>
-  <script src="http://maps.google.com/maps/api/js"></script> -->
-  <script src='./node_modules/angular/angular.min.js'></script>
+  <script src='./bower_components/angular/angular.min.js'></script>
+  <script src="./bower_components/ngmap/build/scripts/ng-map.min.js"></script>
+  <script src="http://maps.google.com/maps/api/js"></script>
+  <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css"></link>
+  <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
  
   <!-- link angular module to app -->
   <script src='./app.js'></script>
 </head>
 <body>
     <!-- so we know we will have a controller in the app called 'miniSprintCrtl' -->
-    <div ng-controller="mainController">
-      <div>
-        <ul>
-          <li ng-repeat="item in store.list | filter:item.opening_hours.open_now = true">
-           <span>{{ item.name }}</span>
-           <br>
-           <span>{{ item.vicinity }}</span>
-           <br>
-           <!-- <div map-lazy-load="https://maps.google.com/maps/api/js">
-           <ng-map center="41,-87" zoom="3"></ng-map> -->
-          </div>
-          </li>
-        </ul>
+    <div class="container-fluid" ng-controller="mainController">
+    <div class="welcome">
+     <div ng-if="store.hour <= 12" class="jumbotron morning">
+      <div id="contactBtn">
+        <h1>Good Morning</h1>
+        <button type="submit" class="btn btn-default "><a href="#main">Pick Me Ups</a></button>
       </div>
+      </div>
+      <div ng-if="store.hour > 12 && store.hour < 17" ng-if="store.hour <= 12" class="jumbotron afternoon">
+      <div id="contactBtn">
+        <h1>Good Afternoon</h1>
+        <button type="submit" class="btn btn-default "><a href="#main">Pick Me Ups</a></button>
+      </div>
+      </div>
+      <div ng-if="store.hour >= 17" class="jumbotron evening">
+      <div id="contactBtn">
+        <h1>Good Evening</h1>
+        <button type="submit" class="btn btn-default "><a href="#main">Pick Me Ups</a></button>
+      </div>
+      </div>    
+      
+     </div> <!--end welcome-->
+      <div id="main">
+      <div class="header">
+      <h4 style="text-align:center" >Your Location is</h4>
+      <h2 style="text-align:center">{{ store.address }}</h2>
+      </div>
+      <div class="mapholder">
+        <ul>
+          <span class="listItem" ng-repeat="item in store.list | filter:item.opening_hours.open_now = true">
+           <span class="itemName">{{ item.name }}</span>
+           <br>
+           <span class="itemAddress">{{ item.vicinity }}</span>
+           <br>
+           <br>
+           <div map-lazy-load="https://maps.google.com/maps/api/js">
+            <ng-map center="{{ item.geometry.location.lat }},{{ item.geometry.location.lng }}" zoom="20"></ng-map>
+           </div>
+          </span>
+        </ul>
+        </div>
+        </div>
     </div>
 </body>
 </html>

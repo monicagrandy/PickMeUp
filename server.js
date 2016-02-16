@@ -1,6 +1,5 @@
 //image server, serves static files
 var express = require('express');
-var utils = require('./utils.js');
 var app = express();
 var morgan = require('morgan');
 var cors = require('cors');

@@ -1,5 +1,5 @@
 {
-  "name": "LAEnvy",
+  "name": "PickMeUp",
   "description": "",
   "main": "server.js",
   "authors": [
@@ -16,6 +16,8 @@
     "tests"
   ],
   "dependencies": {
-    "ngmap": "~1.16.7"
+    "ngmap": "~1.16.7",
+    "angular": "~1.5.0",
+    "bootstrap": "~3.3.6"
   }
 }
