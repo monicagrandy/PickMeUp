@@ -6,19 +6,19 @@ body {
 .jumbotron.morning {
   height: 750px;
   width: 100%;
-  background-image: url('http://www.tenbestreview.com/wp-content/uploads/2015/02/coffee-cup.jpg')
+  background-image: url('./assets/amCoffee.png')
 }
 
 .jumbotron.afternoon {
   height: 750px;
   width: 100%;
-  background-image: url('http://www.publicdomainpictures.net/download-picture.php?adresar=10000&soubor=1-1254659541Lrty.jpg&id=4291')
+  background-image: url('./assets/pmCoffee.png')
 }
 
 .jumbotron.evening {
   height: 750px;
   width: 100%;
-  background-image: url('http://www.factorytwofour.com/wp-content/uploads/2014/04/fc-of-step0-bg.jpg')
+  background-image: url('./assets.cocktail.png')
 }
 
 
@@ -33,6 +33,10 @@ button {
 a {
   text-decoration: none;
   color: #B0A6A4;;
+}
+
+#main {
+  margin-top: 20px;
 }
 
 .mapholder {
