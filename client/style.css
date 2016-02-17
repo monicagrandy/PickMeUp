@@ -18,7 +18,7 @@ body {
 .jumbotron.evening {
   height: 750px;
   width: 100%;
-  background-image: url('./assets.cocktail.png')
+  background-image: url('http://www.factorytwofour.com/wp-content/uploads/2014/04/fc-of-step0-bg.jpg')
 }
 
 
@@ -36,7 +36,7 @@ a {
 }
 
 #main {
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 .mapholder {

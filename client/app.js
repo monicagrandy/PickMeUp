@@ -7,14 +7,14 @@ $scope.store.lat = 0;
 $scope.store.long = 0;
 $scope.store.hour = new Date().getHours();
 
-
-
 //get coordinates of current location
+
 if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(function(position){
       $scope.store.lat = position.coords.latitude;
       $scope.store.long = position.coords.longitude;
-
+      console.log($scope.store.lat)
+      console.log($scope.store.long)
       $http.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + $scope.store.lat + "," + $scope.store.long + "&key=AIzaSyDb8DBHpaDOPFvfMPlpleo8PLWsdZj9RZo").then(function(resp){
         console.log(resp.data.results[0].formatted_address);
           $scope.store.address = resp.data.results[0].formatted_address
@@ -23,7 +23,7 @@ if(navigator.geolocation){
           console.log("cannot retrieve data")
         });
       if($scope.store.hour < 17){
-        $http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + $scope.store.lat + "," + $scope.store.long + "&radius=1609.34&keyword=coffee&key=AIzaSyBT-Y9eLIx5y50wVHiXSXel1PzgdOaOCE0").then(function(resp){
+        $http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + $scope.store.lat + "," + $scope.store.long + "&radius=1609.34&keyword=coffee&key=AIzaSyC5OMnpklycsXCq4WzoasPJ11lQ4279ZIg").then(function(resp){
             console.log(resp.data.results)
             $scope.store.list = resp.data.results
           },
@@ -32,7 +32,7 @@ if(navigator.geolocation){
           });
       }
       else if($scope.store.hour >= 17){ 
-        $http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + $scope.store.lat + "," + $scope.store.long + "&radius=1609.34&type=bar&key=AIzaSyBT-Y9eLIx5y50wVHiXSXel1PzgdOaOCE0").then(function(resp){
+        $http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + $scope.store.lat + "," + $scope.store.long + "&radius=1609.34&type=bar&key=AIzaSyC5OMnpklycsXCq4WzoasPJ11lQ4279ZIg").then(function(resp){
           //console.log(resp.data.results)
           $scope.store.list = resp.data.results
           },
@@ -42,8 +42,6 @@ if(navigator.geolocation){
       }
     });
   }
-  //get address as a string
-
 
 }])
 
