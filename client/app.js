@@ -14,35 +14,32 @@ if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(function(position){
       $scope.store.lat = position.coords.latitude;
       $scope.store.long = position.coords.longitude;
+      var dataToSend = {
+        lat: $scope.store.lat,
+        lng: $scope.store.long,
+        time: $scope.store.hour
+      }
+      console.log("this is the data: ", dataToSend)
+      $scope.sendData(dataToSend, '/apiAddress');
+      $scope.sendData(dataToSend, '/apiPlaces');
+  });
+}    
 
-      $http.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + $scope.store.lat + "," + $scope.store.long + "&key=AIzaSyDb8DBHpaDOPFvfMPlpleo8PLWsdZj9RZo").then(function(resp){
-        console.log(resp.data.results[0].formatted_address);
-          $scope.store.address = resp.data.results[0].formatted_address
-           },
-        function(resp){
-          console.log("cannot retrieve data")
-        });
-      if($scope.store.hour < 17){
-        $http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + $scope.store.lat + "," + $scope.store.long + "&radius=1609.34&keyword=coffee&key=AIzaSyBT-Y9eLIx5y50wVHiXSXel1PzgdOaOCE0").then(function(resp){
-            console.log(resp.data.results)
-            $scope.store.list = resp.data.results
-          },
-          function(resp){
-            console.log("cannot retrieve data")
-          });
-      }
-      else if($scope.store.hour >= 17){ 
-        $http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + $scope.store.lat + "," + $scope.store.long + "&radius=1609.34&type=bar&key=AIzaSyBT-Y9eLIx5y50wVHiXSXel1PzgdOaOCE0").then(function(resp){
-          //console.log(resp.data.results)
-          $scope.store.list = resp.data.results
-          },
-          function(resp){
-          console.log("cannot retrieve data")
-        });
-      }
-    });
-  }
+      
   //get address as a string
+$scope.sendAddress = function(info, route){
+  console.log("inside sendData!")
+  $http({
+        method: 'POST',
+        url: route,
+        data: info
+      }).then(function success(response) {
+          console.log(response)
+        },
+        function error(err) {
+          console.log("ERROR: ", err);
+        });
+  }
 
 
 }])
