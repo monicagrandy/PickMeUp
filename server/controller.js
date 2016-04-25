@@ -11,7 +11,8 @@ exports.getAddress = function(req, res){
   		console.log(err);
   	}
   	else {
-  		console.log("here is the data from getAddress: ", data);
+  		console.log("here is the data from getAddress: ", data.results[0].formatted_address);
+  		res.json(data.results[0].formatted_address)
   	}
   })
 }
@@ -21,6 +22,7 @@ exports.getPlaces = function(req, res){
 	var lat = req.body.lat;
   var lng = req.body.lng;
   var time = req.body.time;
+  console.log(config.placesKey)
   var locations = new PlaceSearch(config.placesKey);
   if(time < 17){
 		locations.search({
@@ -31,7 +33,10 @@ exports.getPlaces = function(req, res){
 		  if (err) {
 		    throw err;
 		  }
-		  console.log("here is the data from getAddress: ", response)
+		  console.log("done")
+		  console.log(response.results)
+		  res.json(response.results)
+		});
 	}
 	else {
 		locations.search({
@@ -42,8 +47,9 @@ exports.getPlaces = function(req, res){
 		  if (err) {
 		    throw err;
 		  }
-		  console.log("here is the data from getAddress: ", response)
-	}
+		  console.log("done")
+		  res.json(response.results)
+		});
 	}	  
 }
 

@@ -27,14 +27,22 @@ if(navigator.geolocation){
 
       
   //get address as a string
-$scope.sendAddress = function(info, route){
+$scope.sendData = function(info, route){
   console.log("inside sendData!")
   $http({
         method: 'POST',
         url: route,
         data: info
       }).then(function success(response) {
-          console.log(response)
+          console.log("here is our response", response)
+          if(typeof response.data === "string"){
+            $scope.store.address = response.data
+            console.log($scope.store.address)
+          }
+          if(Array.isArray(response.data)){
+            $scope.store.list = response.data
+            console.log($scope.store.list)
+          }
         },
         function error(err) {
           console.log("ERROR: ", err);
