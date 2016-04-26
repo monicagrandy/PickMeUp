@@ -1,45 +1,25 @@
 body {
   font-family: 'Lato';
-  background-color: black;
+  background-color: white;
 }
 
-.jumbotron.morning {
-  height: 750px;
+.welcome{
   width: 100%;
-  background-image: url('http://www.tenbestreview.com/wp-content/uploads/2015/02/coffee-cup.jpg')
 }
 
-.jumbotron.afternoon {
-  height: 750px;
+.loading {
   width: 100%;
-  background-image: url('http://www.publicdomainpictures.net/download-picture.php?adresar=10000&soubor=1-1254659541Lrty.jpg&id=4291')
 }
 
-.jumbotron.evening {
-  height: 750px;
-  width: 100%;
-  background-image: url('http://www.factorytwofour.com/wp-content/uploads/2014/04/fc-of-step0-bg.jpg')
-}
-
-
-#contactBtn {
- text-align: center;
-}
-
-button {
-  opacity: 0.5;
-}
-
-a {
-  text-decoration: none;
-  color: #B0A6A4;;
+img {
+  text-align: center;
 }
 
 .mapholder {
   overflow: auto;
   height: 90%;
   width: 100%;
-  border: 2px solid #CFCFCF;
+  border: 2px solid black;
   border-radius: 5px;
   padding: 10px 100px 10px 100px;
 }
@@ -53,13 +33,13 @@ a {
   font-weight: bold;
   font-size: 2em;
   line-height: 1.5;
-  color: #B0A6A4;
+  color: black;
 }
 
 .itemAddress{
   font-size: 1em;
   line-height: 1.5;
-  color: #B0A6A4;
+  color: black;
 }
 
 

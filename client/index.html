@@ -16,28 +16,21 @@
 <body>
     <!-- so we know we will have a controller in the app called 'miniSprintCrtl' -->
     <div class="container-fluid" ng-controller="mainController">
-    <div class="welcome">
-     <div ng-if="store.hour <= 12" class="jumbotron morning">
-      <div id="contactBtn">
+    <div ng-if="!store.list" class="welcome">
+     <div ng-if="store.hour <= 12" class="loading">
+        <img src="./assets/143.gif">
         <h1>Good Morning</h1>
-        <button type="submit" class="btn btn-default "><a href="#main">Pick Me Ups</a></button>
       </div>
-      </div>
-      <div ng-if="store.hour > 12 && store.hour < 17" ng-if="store.hour <= 12" class="jumbotron afternoon">
-      <div id="contactBtn">
+      <div ng-if="store.hour > 12 && store.hour < 17">
+        <img src="./assets/143.gif">
         <h1>Good Afternoon</h1>
-        <button type="submit" class="btn btn-default "><a href="#main">Pick Me Ups</a></button>
-      </div>
       </div>
       <div ng-if="store.hour >= 17" class="jumbotron evening">
-      <div id="contactBtn">
+        <img src="./assets/143.gif">
         <h1>Good Evening</h1>
-        <button type="submit" class="btn btn-default "><a href="#main">Pick Me Ups</a></button>
-      </div>
-      </div>    
-      
+      </div>   
      </div> <!--end welcome-->
-      <div id="main">
+      <div ng-if="store.list" id="main">
       <div class="header">
       <h4 style="text-align:center" >Your Location is</h4>
       <h2 style="text-align:center">{{ store.address }}</h2>
