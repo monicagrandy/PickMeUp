@@ -21,12 +21,12 @@
         <img src="./assets/143.gif">
         <h1>Good Morning</h1>
       </div>
-      <div ng-if="store.hour > 12 && store.hour < 17">
+      <div ng-if="store.hour > 12 && store.hour < 17" class="loading">
         <img src="./assets/143.gif">
         <h1>Good Afternoon</h1>
       </div>
-      <div ng-if="store.hour >= 17" class="jumbotron evening">
-        <img src="./assets/143.gif">
+      <div ng-if="store.hour >= 17" class="loading">
+        <img src="./assets/wine.gif">
         <h1>Good Evening</h1>
       </div>   
      </div> <!--end welcome-->
