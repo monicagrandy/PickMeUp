@@ -1,74 +1,57 @@
 body {
   font-family: 'Lato';
-  background-color: black;
-  color: #CFCFCF;
+  background-color: white;
 }
 
-.jumbotron.morning {
-  height: 100%;
+.welcome{
   width: 100%;
-  background-image: url('./assets/amCoffee.png')
-}
-
-.jumbotron.afternoon {
   height: 100%;
-  width: 100%;
-  background-image: url('./assets/pmCoffee.png')
 }
 
-.jumbotron.evening {
-  height: 100%;
-  width: 100%;
-  background-image: url('http://www.factorytwofour.com/wp-content/uploads/2014/04/fc-of-step0-bg.jpg')
-}
-
-
-#contactBtn {
- text-align: center;
-}
-
-button {
-  opacity: 0.5;
-}
-
-a {
-  text-decoration: none;
-  color: #B0A6A4;;
-}
-
-#main {
+.loading {
   margin-top: 10%;
+  width: 100%;
+  height: 100%;
+}
+
+img {
+  display: block;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.loading h1 {
+  text-align: center;
 }
 
 .mapholder {
   overflow: auto;
   height: 90%;
   width: 100%;
-  border: 2px solid #CFCFCF;
+  border: 2px solid black;
   border-radius: 5px;
   padding: 10px 100px 10px 100px;
 }
 
 .listItem {
-  width: 100%;
+  display: inline;
+  width: 50%;
 }
 
 .itemName{
   font-weight: bold;
   font-size: 2em;
   line-height: 1.5;
-  color: #B0A6A4;
+  color: black;
 }
 
 .itemAddress{
   font-size: 1em;
   line-height: 1.5;
-  color: #B0A6A4;
+  color: black;
 }
 
 
 ul {
   padding: 0 30px 0 30px;
 }
-
-

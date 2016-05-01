@@ -1,6 +1,6 @@
 var PlaceSearch = require('google-locations');
 var Geocode = require('geocoder')
-var config = require('./config.js')
+var config = require('./configDetails.js')
 
 exports.getAddress = function(req, res){
 	console.log(req.body);
