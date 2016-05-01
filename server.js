@@ -5,7 +5,7 @@ var bodyParser = require('body-parser').json()
 var morgan = require('morgan');
 var cors = require('cors');
 var controller = require('./server/controller.js')
-var port = 8080;
+var port = process.env.PORT || 8080;
 app.use(morgan('tiny'));
 app.use(express.static(__dirname + '/client/'));
 app.use('/node_modules', express.static(__dirname + '/node_modules/'));
