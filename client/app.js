@@ -7,41 +7,48 @@ $scope.store.lat = 0;
 $scope.store.long = 0;
 $scope.store.hour = new Date().getHours();
 
-//get coordinates of current location
 
+
+//get coordinates of current location
 if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(function(position){
       $scope.store.lat = position.coords.latitude;
       $scope.store.long = position.coords.longitude;
-      console.log($scope.store.lat)
-      console.log($scope.store.long)
-      $http.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + $scope.store.lat + "," + $scope.store.long + "&key=AIzaSyDb8DBHpaDOPFvfMPlpleo8PLWsdZj9RZo").then(function(resp){
-        console.log(resp.data.results[0].formatted_address);
-          $scope.store.address = resp.data.results[0].formatted_address
-           },
-        function(resp){
-          console.log("cannot retrieve data")
-        });
-      if($scope.store.hour < 17){
-        $http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + $scope.store.lat + "," + $scope.store.long + "&radius=1609.34&keyword=coffee&key=AIzaSyC5OMnpklycsXCq4WzoasPJ11lQ4279ZIg").then(function(resp){
-            console.log(resp.data.results)
-            $scope.store.list = resp.data.results
-          },
-          function(resp){
-            console.log("cannot retrieve data")
-          });
+      var dataToSend = {
+        lat: $scope.store.lat,
+        lng: $scope.store.long,
+        time: $scope.store.hour
       }
-      else if($scope.store.hour >= 17){ 
-        $http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + $scope.store.lat + "," + $scope.store.long + "&radius=1609.34&type=bar&key=AIzaSyC5OMnpklycsXCq4WzoasPJ11lQ4279ZIg").then(function(resp){
-          //console.log(resp.data.results)
-          $scope.store.list = resp.data.results
-          },
-          function(resp){
-          console.log("cannot retrieve data")
+      console.log("this is the data: ", dataToSend)
+      $scope.sendData(dataToSend, '/apiAddress');
+      $scope.sendData(dataToSend, '/apiPlaces');
+  });
+}    
+
+      
+  //get address as a string
+$scope.sendData = function(info, route){
+  console.log("inside sendData!")
+  $http({
+        method: 'POST',
+        url: route,
+        data: info
+      }).then(function success(response) {
+          console.log("here is our response", response)
+          if(typeof response.data === "string"){
+            $scope.store.address = response.data
+            console.log($scope.store.address)
+          }
+          if(Array.isArray(response.data)){
+            $scope.store.list = response.data
+            console.log($scope.store.list)
+          }
+        },
+        function error(err) {
+          console.log("ERROR: ", err);
         });
-      }
-    });
   }
+
 
 }])
 

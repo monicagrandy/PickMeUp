@@ -1,21 +1,17 @@
 //image server, serves static files
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser').json()
 var morgan = require('morgan');
 var cors = require('cors');
-var port = process.env.PORT || 8080;
+var controller = require('./server/controller.js')
+var port = 8080;
 app.use(morgan('tiny'));
-
-app.set('view engine', 'ejs');
-
 app.use(express.static(__dirname + '/client/'));
 app.use('/node_modules', express.static(__dirname + '/node_modules/'));
 
-app.get('/', function(req,res){
-  res.render('index');
-})
+app.post('/apiAddress', bodyParser, controller.getAddress);
+app.post('/apiPlaces', bodyParser, controller.getPlaces)
 
 app.listen(port);
 console.log("Express server listening on %d in %s mode", port, app.settings.env);
-
-
